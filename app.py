@@ -9,6 +9,7 @@ from models.aluno import Aluno
 from models.professor import Professor
 from models.turma import Turma
 
+
 app = Flask(__name__, template_folder=os.path.join('view', 'templates'))
 app.config.from_object(Config)
 

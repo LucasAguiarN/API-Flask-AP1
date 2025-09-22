@@ -1,5 +1,6 @@
 from models import db
 
+
 # Class que vira uma Tabela no Banco de Dados
 class Professor(db.Model):
 
