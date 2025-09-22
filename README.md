@@ -27,7 +27,7 @@
 
 <h2 id="sobre">📖 Sobre</h2>
 API referente a Atividade Avaliativa 1 da Disciplina de Desenvolvimento de APIs e Microsserviços, ministrada pelo professor Giovani Bontempo na Faculdade Impacta, durante o terceiro semestre do curso Análise e Desenvolvimento de Sistemas cursado no 2º Semestre de 2025.
-<br><br>
+<br>
 
 <h2 id="requisitos">📦 Requisitos</h2>
 
