@@ -1,16 +1,15 @@
-import os
 from flask import Flask
 from config import Config
 from models import db
-#from controllers.aluno import Aluno
-#from controllers.professor import Professor
-#from controllers.turma import Turma
-from models.aluno import Aluno
-from models.professor import Professor
-from models.turma import Turma
+import controllers.aluno_controller
+import controllers.professor_controller
+import controllers.turma_controller
+#from models.aluno import Aluno
+#from models.professor import Professor
+#from models.turma import Turma
 
 
-app = Flask(__name__, template_folder=os.path.join('view', 'templates'))
+app = Flask(__name__)
 app.config.from_object(Config)
 
 db.init_app(app)
