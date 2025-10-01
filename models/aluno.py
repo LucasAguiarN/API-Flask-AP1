@@ -23,3 +23,16 @@ class Aluno(db.Model):
 
     def __repr__(self):
         return f"<Aluno {self.nome} ID: {self.id}>"
+    
+    def para_dicionario(self):
+        dados = {
+            "id": self.id,
+            "nome": self.nome,
+            "idade": self.idade, 
+            "data_nasc": self.data_nasc,
+            "nota_1semestre": self.nota_1semestre,
+            "nota_2semestre": self.nota_2semestre,
+            "media": self.media,
+            "turma_id": self.turma_id
+        }
+        return dados

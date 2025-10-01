@@ -22,3 +22,12 @@ class Turma(db.Model):
 
     def __repr__(self):
         return f"<Turma {self.descricao} ID: {self.id}>"
+        
+    def para_dicionario(self):
+        dados = {
+            "id": self.id,
+            "descricao": self.nome,
+            "ativo": self.idade, 
+            "professor_id": self.data_nasc
+        }
+        return dados

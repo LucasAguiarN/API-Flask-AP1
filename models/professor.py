@@ -19,3 +19,13 @@ class Professor(db.Model):
 
     def __repr__(self):
         return f"<Professor {self.nome} ID: {self.id}>"
+        
+    def para_dicionario(self):
+        dados = {
+            "id": self.id,
+            "nome": self.nome,
+            "idade": self.idade, 
+            "materia": self.materia,
+            "observacoes": self.observacoes
+        }
+        return dados
