@@ -1,5 +1,4 @@
 from flask import jsonify, request
-from app import app
 from models import db
 from models.professor import Professor
 
@@ -7,17 +6,18 @@ from models.professor import Professor
 class ProfessorController:
     
     @staticmethod
-    @app.route('/professores', methods=['GET'])
     def listar_professores():
         professores = Professor.query.all()
-        if not professores:
-            return jsonify(professores), 200
+        if professores:
+            lista = []
+            for professor in professores:
+                lista.append(professor.para_dicionario())
+            return jsonify(lista), 200
         else:
             mensagem = {"Erro": "Lista de Professores Vazia!"}
             return jsonify(mensagem), 200
     
     @staticmethod
-    @app.route('/professores', methods=['POST'])
     def criar_professor():
         dados = request.json
         if not dados:
@@ -43,11 +43,10 @@ class ProfessorController:
         db.session.add(novo_professor)
         db.session.commit()
 
-        mensagem = {"Mensagem": "Turma Cadastrada com Sucesso!"}
+        mensagem = {"Mensagem": "Professor Cadastrado com Sucesso!"}
         return jsonify(mensagem), 201
     
     @staticmethod
-    @app.route('/professores/<int:professor_id>', methods=['PUT'])
     def atualizar_professor(professor_id):
         dados = request.json
         if not dados:
@@ -74,7 +73,6 @@ class ProfessorController:
         return jsonify(mensagem), 201
     
     @staticmethod
-    @app.route('/professores/<int:professor_id>', methods=['DELETE'])
     def deletar_professor(professor_id):
         dados = request.json
         if not dados:

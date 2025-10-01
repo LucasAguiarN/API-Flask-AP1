@@ -1,5 +1,4 @@
 from flask import jsonify, request
-from app import app
 from models import db
 from models.professor import Professor
 from models.turma import Turma
@@ -8,17 +7,18 @@ from models.turma import Turma
 class TurmaController:
     
     @staticmethod
-    @app.route('/turmas', methods=['GET'])
     def listar_turmas():
         turmas = Turma.query.all()
-        if not turmas:
-            return jsonify(turmas), 200
+        if turmas:
+            lista = []
+            for turma in turmas:
+                lista.append(turma.para_dicionario())
+            return jsonify(lista), 200
         else:
             mensagem = {"Erro": "Lista de Aluno Vazia!"}
             return jsonify(mensagem), 200
     
     @staticmethod
-    @app.route('/turmas', methods=['POST'])
     def criar_turma():
         dados = request.json
         if not dados:
@@ -51,7 +51,6 @@ class TurmaController:
         return jsonify(mensagem), 201
     
     @staticmethod
-    @app.route('/turmas/<int:turma_id>', methods=['PUT'])
     def atualizar_turma(turma_id):
         dados = request.json
         if not dados:
@@ -81,7 +80,6 @@ class TurmaController:
         return jsonify(mensagem), 201
     
     @staticmethod
-    @app.route('/turmas/<int:turma_id>', methods=['DELETE'])
     def deletar_turma(turma_id):
         dados = request.json
         if not dados:
