@@ -66,5 +66,78 @@ pip install -r requirements.txt
 
 <h2 id="endpoints">🛠️ Endpoints da API</h2>
 
+Listagem de Alunos
+```bash
+curl -X GET http://localhost:5000/alunos
+```
+Cadastro de Alunos
+```bash
+curl -X POST http://localhost:5000/alunos \
+    -H "Content-Type: application/json" \
+    -d '{
+          "nome":"Lucas",
+          "idade":"27", 
+          "data_nasc":"18/11/1998",
+          "nota_1semestre":"10",
+          "nota_2semestre":"8",
+          "media":"9",
+          "turma_id":"1"
+        }'
+```
+Atualizar Aluno
+```bash
+curl -X PUT http://localhost:5000/alunos/atualizar/<int:aluno_id>
+```
+Deletar Alunos
+```bash
+curl -X DELETE http://localhost:5000/alunos/deletar/<int:aluno_id>
+```
+Listagem de Professores
+```bash
+curl -X GET http://localhost:5000/professores
+```
+Cadastro de Professor
+```bash
+curl -X POST http://localhost:5000/professores \
+    -H "Content-Type: application/json" \
+    -d '{
+          "nome":"Carlos",
+          "idade":"32", 
+          "materia":"Microserviços",
+          "observacoes":""
+        }'
+```
+Atualizar Professor
+```bash
+curl -X PUT http://localhost:5000/professores/atualizar/<int:professor_id>
+```
+Deletar Professor
+```bash
+curl -X DELETE http://localhost:5000/professores/deletar/<int:professor_id>
+```
+Listagem de Turmas
+```bash
+curl -X GET http://localhost:5000/turmas
+```
+Cadastro de Turma
+```bash
+curl -X POST http://localhost:5000/turmas \
+    -H "Content-Type: application/json" \
+    -d '{
+          "nome":"Lucas",
+          "descricao":"ADS", 
+          "ativo":"1",
+          "professor_id":"1",
+        }'
+```
+Atualizar Turma
+```bash
+curl -X PUT http://localhost:5000/turmas/atualizar/<int:turma_id>
+```
+Deletar Turma
+```bash
+curl -X DELETE http://localhost:5000/turmas/deletar/<int:turma_id>
+```
+
 <h2 id="licença">📜 Licença</h2>
 Este projeto é para fins educacionais e está disponível sob a <a href="./LICENSE">Licença MIT.</a>
