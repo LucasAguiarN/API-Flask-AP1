@@ -4,9 +4,6 @@ from models import db
 from controllers.aluno_controller import AlunoController
 from controllers.professor_controller import ProfessorController
 from controllers.turma_controller import TurmaController
-#from models.aluno import Aluno
-#from models.professor import Professor
-#from models.turma import Turma
 
 
 app = Flask(__name__)
