@@ -15,7 +15,7 @@ class AlunoController:
                 lista.append(aluno.para_dicionario())
             return jsonify(lista), 200
         else:
-            mensagem = {"Erro": "Lista de Aluno Vazia!"}
+            mensagem = {"Erro": "Lista de Alunos Vazia!"}
             return jsonify(mensagem), 200
     
     @staticmethod
@@ -37,7 +37,7 @@ class AlunoController:
             mensagem = {"Erro": "Aluno Já Cadastrado!"}
             return jsonify(mensagem), 200
         
-        registro_turmas = Turma.query.filter_by(turma_id=turma_id).first()
+        registro_turmas = Turma.query.filter_by(id=turma_id).first()
         if not registro_turmas:
             mensagem = {"Erro": "Turma Não Cadastrada!"}
             return jsonify(mensagem), 200
@@ -77,7 +77,7 @@ class AlunoController:
         media = dados.get("media")
         turma_id = dados.get("turma_id")
       
-        registro_turmas = Turma.query.filter_by(turma_id=turma_id).first()
+        registro_turmas = Turma.query.filter_by(id=turma_id).first()
         if not registro_turmas:
             mensagem = {"Erro": "Turma Não Cadastrada!"}
             return jsonify(mensagem), 200

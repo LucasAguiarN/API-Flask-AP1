@@ -15,7 +15,7 @@ class TurmaController:
                 lista.append(turma.para_dicionario())
             return jsonify(lista), 200
         else:
-            mensagem = {"Erro": "Lista de Aluno Vazia!"}
+            mensagem = {"Erro": "Lista de Turmas Vazia!"}
             return jsonify(mensagem), 200
     
     @staticmethod
@@ -25,7 +25,7 @@ class TurmaController:
             return {"Erro": "Requisição Incorreta"}, 400
 
         descricao = dados.get("descricao")
-        ativo = dados.get("ativo")
+        ativo = True if dados.get("ativo") == "True" else False
         professor_id = dados.get("professor_id")
 
         registro_turma = Turma.query.filter_by(descricao=descricao).first()
@@ -33,7 +33,7 @@ class TurmaController:
             mensagem = {"Erro": "Turma Já Cadastrado!"}
             return jsonify(mensagem), 200
         
-        registro_professor = Professor.query.filter_by(professor_id=professor_id).first()
+        registro_professor = Professor.query.filter_by(id=professor_id).first()
         if not registro_professor:
             mensagem = {"Erro": "Professor Não Cadastrado!"}
             return jsonify(mensagem), 200
@@ -62,10 +62,10 @@ class TurmaController:
             return jsonify(mensagem), 200
         
         descricao = dados.get("descricao")
-        ativo = dados.get("ativo")
+        ativo = True if dados.get("ativo") == "True" else False
         professor_id = dados.get("professor_id")
       
-        registro_professor = Professor.query.filter_by(professor_id=professor_id).first()
+        registro_professor = Professor.query.filter_by(id=professor_id).first()
         if not registro_professor:
             mensagem = {"Erro": "Professor Não Cadastrado!"}
             return jsonify(mensagem), 200
