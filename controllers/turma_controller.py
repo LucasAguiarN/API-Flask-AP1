@@ -37,6 +37,10 @@ class TurmaController:
         ativo = True if dados.get("ativo") == "True" else False
         professor_id = dados.get("professor_id")
 
+        if (descricao == None or professor_id == None):
+            mensagem = {"Erro": "Formulário Incompleto!"}
+            return jsonify(mensagem), 200
+
         registro_turma = Turma.query.filter_by(descricao=descricao).first()
         if registro_turma:
             mensagem = {"Erro": "Turma Já Cadastrado!"}
@@ -73,6 +77,10 @@ class TurmaController:
         descricao = dados.get("descricao")
         ativo = True if dados.get("ativo") == "True" else False
         professor_id = dados.get("professor_id")
+
+        if (descricao == None or professor_id == None):
+            mensagem = {"Erro": "Formulário Incompleto!"}
+            return jsonify(mensagem), 200
       
         registro_professor = Professor.query.filter_by(id=professor_id).first()
         if not registro_professor:

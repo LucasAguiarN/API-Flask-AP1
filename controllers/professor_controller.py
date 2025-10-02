@@ -37,6 +37,10 @@ class ProfessorController:
         materia = dados.get("materia")
         observacoes = dados.get("observacoes")
 
+        if (nome == None or idade == None or materia == None):
+            mensagem = {"Erro": "Formulário Incompleto!"}
+            return jsonify(mensagem), 200
+
         registro_professor = Professor.query.filter_by(nome=nome).first()
         if registro_professor:
             mensagem = {"Erro": "Professor Já Cadastrado!"}
@@ -70,6 +74,10 @@ class ProfessorController:
         idade = dados.get("idade")
         materia = dados.get("materia")
         observacoes = dados.get("observacoes")
+
+        if (nome == None or idade == None or materia == None):
+            mensagem = {"Erro": "Formulário Incompleto!"}
+            return jsonify(mensagem), 200
       
         professor.nome = nome
         professor.idade = idade 

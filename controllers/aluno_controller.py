@@ -36,12 +36,16 @@ class AlunoController:
 
         nome = dados.get("nome")
         idade = dados.get("idade")
-        data_nasc = datetime.strptime(dados.get("data_nasc"), "%d/%m/%Y").date()
+        data = dados.get("data_nasc")
         nota_1semestre = dados.get("nota_1semestre")
         nota_2semestre = dados.get("nota_2semestre")
-        media =  (int(nota_1semestre) + int(nota_2semestre)) / 2
-        #media = dados.get("media")
         turma_id = dados.get("turma_id")
+
+        if (nome == None or idade == None or data == None or nota_1semestre == None or nota_2semestre == None or turma_id == None):
+            mensagem = {"Erro": "Formulário Incompleto!"}
+            return jsonify(mensagem), 200
+        media =  (int(nota_1semestre) + int(nota_2semestre)) / 2
+        data_nasc = datetime.strptime(data, "%d/%m/%Y").date()
 
         registro_alunos = Aluno.query.filter_by(nome=nome).first()
         if registro_alunos:
@@ -82,12 +86,16 @@ class AlunoController:
         
         nome = dados.get("nome")
         idade = dados.get("idade")
-        data_nasc = datetime.strptime(dados.get("data_nasc"), "%d/%m/%Y").date()
+        data = dados.get("data_nasc")
         nota_1semestre = dados.get("nota_1semestre")
         nota_2semestre = dados.get("nota_2semestre")
-        media =  (int(nota_1semestre) + int(nota_2semestre)) / 2
-        #media = dados.get("media")
         turma_id = dados.get("turma_id")
+
+        if (nome == None or idade == None or data == None or nota_1semestre == None or nota_2semestre == None or turma_id == None):
+            mensagem = {"Erro": "Formulário Incompleto!"}
+            return jsonify(mensagem), 200
+        media =  (int(nota_1semestre) + int(nota_2semestre)) / 2
+        data_nasc = datetime.strptime(data, "%d/%m/%Y").date()
       
         registro_turmas = Turma.query.filter_by(id=turma_id).first()
         if not registro_turmas:
