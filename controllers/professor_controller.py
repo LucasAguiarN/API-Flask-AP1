@@ -74,14 +74,14 @@ class ProfessorController:
     
     @staticmethod
     def deletar_professor(professor_id):
-        dados = request.json
-        if not dados:
-            return {"Erro": "Requisição Incorreta"}, 400
 
         professor = Professor.query.get(professor_id)
         if professor is None:
             mensagem = {"Erro": "Professor Não Cadastrado!"}
             return jsonify(mensagem), 200
+        
+        if professor.turmas:
+            return jsonify({"Erro": "Professor com Turma Vinculada!"}), 400
         
         db.session.delete(professor)
         db.session.commit()

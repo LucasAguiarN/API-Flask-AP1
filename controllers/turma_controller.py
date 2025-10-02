@@ -81,14 +81,14 @@ class TurmaController:
     
     @staticmethod
     def deletar_turma(turma_id):
-        dados = request.json
-        if not dados:
-            return {"Erro": "Requisição Incorreta"}, 400
 
         turma = Turma.query.get(turma_id)
         if turma is None:
             mensagem = {"Erro": "Turma Não Cadastrada!"}
             return jsonify(mensagem), 200
+        
+        if turma.alunos:
+           return jsonify({"Erro": "Turma com Aluno Vinculado!"}), 400
         
         db.session.delete(turma)
         db.session.commit()

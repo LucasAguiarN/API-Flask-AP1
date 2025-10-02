@@ -25,7 +25,7 @@ app.add_url_rule("/alunos/deletar/<int:aluno_id>", view_func=AlunoController.del
 app.add_url_rule("/professores", view_func=ProfessorController.listar_professores, methods=["GET"])
 app.add_url_rule("/professores", view_func=ProfessorController.criar_professor, methods=["POST"])
 app.add_url_rule("/professores/atualizar/<int:professor_id>", view_func=ProfessorController.atualizar_professor, methods=["PUT"])
-app.add_url_rule("/professores/deletar/<int:professsor_id>", view_func=ProfessorController.deletar_professor, methods=["DELETE"])
+app.add_url_rule("/professores/deletar/<int:professor_id>", view_func=ProfessorController.deletar_professor, methods=["DELETE"])
 
 # Rotas Turmas
 app.add_url_rule("/turmas", view_func=TurmaController.listar_turmas, methods=["GET"])

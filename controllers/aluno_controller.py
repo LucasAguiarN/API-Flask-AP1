@@ -98,9 +98,6 @@ class AlunoController:
     
     @staticmethod
     def deletar_aluno(aluno_id):
-        dados = request.json
-        if not dados:
-            return {"Erro": "Requisição Incorreta"}, 400
 
         aluno = Aluno.query.get(aluno_id)
         if aluno is None:
