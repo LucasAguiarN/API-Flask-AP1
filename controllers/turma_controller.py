@@ -17,6 +17,15 @@ class TurmaController:
         else:
             mensagem = {"Erro": "Lista de Turmas Vazia!"}
             return jsonify(mensagem), 200
+        
+    @staticmethod
+    def exibir_turma(turma_id):
+        turma = Turma.query.get(turma_id)
+        if turma:
+            return jsonify(turma.para_dicionario()), 200
+        else:
+            mensagem = {"Erro": "Turma Não Cadastrada!"}
+            return jsonify(mensagem), 200
     
     @staticmethod
     def criar_turma():

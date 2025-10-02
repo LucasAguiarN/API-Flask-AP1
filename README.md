@@ -83,6 +83,10 @@ curl -X POST http://localhost:5000/alunos \
           "turma_id":"1"
         }'
 ```
+Exibir Aluno
+```bash
+curl -X GET http://localhost:5000/aluno/<int:aluno_id>
+```
 Atualizar Aluno
 ```bash
 curl -X PUT http://localhost:5000/alunos/atualizar/<int:aluno_id> \
@@ -115,6 +119,10 @@ curl -X POST http://localhost:5000/professores \
           "observacoes":""
         }'
 ```
+Exibir Professor
+```bash
+curl -X GET http://localhost:5000/professor/<int:professor_id>
+```
 Atualizar Professor
 ```bash
 curl -X PUT http://localhost:5000/professores/atualizar/<int:professor_id> \
@@ -143,6 +151,10 @@ curl -X POST http://localhost:5000/turmas \
           "ativo":"True",
           "professor_id":"1"
         }'
+```
+Exibir Turma
+```bash
+curl -X GET http://localhost:5000/turma/<int:turma_id>
 ```
 Atualizar Turma
 ```bash

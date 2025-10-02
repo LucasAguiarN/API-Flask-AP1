@@ -16,6 +16,15 @@ class ProfessorController:
         else:
             mensagem = {"Erro": "Lista de Professores Vazia!"}
             return jsonify(mensagem), 200
+        
+    @staticmethod
+    def exibir_professor(professor_id):
+        professor = Professor.query.get(professor_id)
+        if professor:
+            return jsonify(professor.para_dicionario()), 200
+        else:
+            mensagem = {"Erro": "Professor Não Cadastrado!"}
+            return jsonify(mensagem), 200
     
     @staticmethod
     def criar_professor():

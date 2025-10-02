@@ -17,18 +17,21 @@ with app.app_context():
 
 # Rotas Alunos
 app.add_url_rule("/alunos", view_func=AlunoController.listar_alunos, methods=["GET"])
+app.add_url_rule("/aluno/<int:aluno_id>", view_func=AlunoController.exibir_aluno, methods=["GET"])
 app.add_url_rule("/alunos", view_func=AlunoController.criar_aluno, methods=["POST"])
 app.add_url_rule("/alunos/atualizar/<int:aluno_id>", view_func=AlunoController.atualizar_aluno, methods=["PUT"])
 app.add_url_rule("/alunos/deletar/<int:aluno_id>", view_func=AlunoController.deletar_aluno, methods=["DELETE"])
 
 # Rotas Professores
 app.add_url_rule("/professores", view_func=ProfessorController.listar_professores, methods=["GET"])
+app.add_url_rule("/professor/<int:professor_id>", view_func=ProfessorController.exibir_professor, methods=["GET"])
 app.add_url_rule("/professores", view_func=ProfessorController.criar_professor, methods=["POST"])
 app.add_url_rule("/professores/atualizar/<int:professor_id>", view_func=ProfessorController.atualizar_professor, methods=["PUT"])
 app.add_url_rule("/professores/deletar/<int:professor_id>", view_func=ProfessorController.deletar_professor, methods=["DELETE"])
 
 # Rotas Turmas
 app.add_url_rule("/turmas", view_func=TurmaController.listar_turmas, methods=["GET"])
+app.add_url_rule("/turma/<int:turma_id>", view_func=TurmaController.exibir_turma, methods=["GET"])
 app.add_url_rule("/turmas", view_func=TurmaController.criar_turma, methods=["POST"])
 app.add_url_rule("/turmas/atualizar/<int:turma_id>", view_func=TurmaController.atualizar_turma, methods=["PUT"])
 app.add_url_rule("/turmas/deletar/<int:turma_id>", view_func=TurmaController.deletar_turma, methods=["DELETE"])

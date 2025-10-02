@@ -18,6 +18,15 @@ class AlunoController:
         else:
             mensagem = {"Erro": "Lista de Alunos Vazia!"}
             return jsonify(mensagem), 200
+        
+    @staticmethod
+    def exibir_aluno(aluno_id):
+        aluno = Aluno.query.get(aluno_id)
+        if aluno:
+            return jsonify(aluno.para_dicionario()), 200
+        else:
+            mensagem = {"Erro": "Aluno Não Cadastrado!"}
+            return jsonify(mensagem), 200
     
     @staticmethod
     def criar_aluno():
