@@ -80,7 +80,6 @@ curl -X POST http://localhost:5000/alunos \
           "data_nasc":"18/11/1998",
           "nota_1semestre":"10",
           "nota_2semestre":"8",
-          "media":"9",
           "turma_id":"1"
         }'
 ```
@@ -94,7 +93,6 @@ curl -X PUT http://localhost:5000/alunos/atualizar/<int:aluno_id> \
           "data_nasc":"18/11/1998",
           "nota_1semestre":"8",
           "nota_2semestre":"8",
-          "media":"8",
           "turma_id":"1"
         }'
 ```

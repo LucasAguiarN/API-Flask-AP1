@@ -30,7 +30,8 @@ class AlunoController:
         data_nasc = datetime.strptime(dados.get("data_nasc"), "%d/%m/%Y").date()
         nota_1semestre = dados.get("nota_1semestre")
         nota_2semestre = dados.get("nota_2semestre")
-        media = dados.get("media")
+        media =  (int(nota_1semestre) + int(nota_2semestre)) / 2
+        #media = dados.get("media")
         turma_id = dados.get("turma_id")
 
         registro_alunos = Aluno.query.filter_by(nome=nome).first()
@@ -75,7 +76,8 @@ class AlunoController:
         data_nasc = datetime.strptime(dados.get("data_nasc"), "%d/%m/%Y").date()
         nota_1semestre = dados.get("nota_1semestre")
         nota_2semestre = dados.get("nota_2semestre")
-        media = dados.get("media")
+        media =  (int(nota_1semestre) + int(nota_2semestre)) / 2
+        #media = dados.get("media")
         turma_id = dados.get("turma_id")
       
         registro_turmas = Turma.query.filter_by(id=turma_id).first()
