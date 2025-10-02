@@ -2,6 +2,7 @@ from flask import jsonify, request
 from models import db
 from models.aluno import Aluno
 from models.turma import Turma
+from datetime import datetime
 
 
 class AlunoController:
@@ -26,7 +27,7 @@ class AlunoController:
 
         nome = dados.get("nome")
         idade = dados.get("idade")
-        data_nasc = dados.get("data_nascade")
+        data_nasc = datetime.strptime(dados.get("data_nasc"), "%d/%m/%Y").date()
         nota_1semestre = dados.get("nota_1semestre")
         nota_2semestre = dados.get("nota_2semestre")
         media = dados.get("media")
@@ -71,7 +72,7 @@ class AlunoController:
         
         nome = dados.get("nome")
         idade = dados.get("idade")
-        data_nasc = dados.get("data_nascade")
+        data_nasc = datetime.strptime(dados.get("data_nasc"), "%d/%m/%Y").date()
         nota_1semestre = dados.get("nota_1semestre")
         nota_2semestre = dados.get("nota_2semestre")
         media = dados.get("media")

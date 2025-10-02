@@ -11,7 +11,7 @@ class Aluno(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(100), nullable=False)
     idade = db.Column(db.Integer, nullable=False)
-    data_nasc = db.Column(db.Float, nullable=False)
+    data_nasc = db.Column(db.Date, nullable=False)
     nota_1semestre = db.Column(db.Float, nullable=False)
     nota_2semestre = db.Column(db.Float, nullable=False)
     media = db.Column(db.Float, nullable=False)

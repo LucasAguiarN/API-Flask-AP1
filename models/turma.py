@@ -26,8 +26,8 @@ class Turma(db.Model):
     def para_dicionario(self):
         dados = {
             "id": self.id,
-            "descricao": self.nome,
-            "ativo": self.idade, 
-            "professor_id": self.data_nasc
+            "descricao": self.descricao,
+            "ativo": self.ativo, 
+            "professor_id": self.professor_id
         }
         return dados
