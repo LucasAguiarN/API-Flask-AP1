@@ -16,7 +16,7 @@ class TurmaController:
             return jsonify(lista), 200
         else:
             mensagem = {"Erro": "Lista de Turmas Vazia!"}
-            return jsonify(mensagem), 200
+            return jsonify(mensagem), 404
         
     @staticmethod
     def exibir_turma(turma_id):
@@ -25,7 +25,7 @@ class TurmaController:
             return jsonify(turma.para_dicionario()), 200
         else:
             mensagem = {"Erro": "Turma Não Cadastrada!"}
-            return jsonify(mensagem), 200
+            return jsonify(mensagem), 404
     
     @staticmethod
     def criar_turma():
@@ -39,17 +39,17 @@ class TurmaController:
 
         if (descricao == None or professor_id == None):
             mensagem = {"Erro": "Formulário Incompleto!"}
-            return jsonify(mensagem), 200
+            return jsonify(mensagem), 400
 
         registro_turma = Turma.query.filter_by(descricao=descricao).first()
         if registro_turma:
             mensagem = {"Erro": "Turma Já Cadastrado!"}
-            return jsonify(mensagem), 200
+            return jsonify(mensagem), 409
         
         registro_professor = Professor.query.filter_by(id=professor_id).first()
         if not registro_professor:
             mensagem = {"Erro": "Professor Não Cadastrado!"}
-            return jsonify(mensagem), 200
+            return jsonify(mensagem), 404
 
         nova_turma = Turma(
             descricao = descricao,
@@ -72,7 +72,7 @@ class TurmaController:
         turma = Turma.query.get(turma_id)
         if turma is None:
             mensagem = {"Erro": "Turma Não Cadastrada!"}
-            return jsonify(mensagem), 200
+            return jsonify(mensagem), 404
         
         descricao = dados.get("descricao")
         ativo = True if dados.get("ativo") == "True" else False
@@ -80,12 +80,12 @@ class TurmaController:
 
         if (descricao == None or professor_id == None):
             mensagem = {"Erro": "Formulário Incompleto!"}
-            return jsonify(mensagem), 200
+            return jsonify(mensagem), 400
       
         registro_professor = Professor.query.filter_by(id=professor_id).first()
         if not registro_professor:
             mensagem = {"Erro": "Professor Não Cadastrado!"}
-            return jsonify(mensagem), 200
+            return jsonify(mensagem), 404
 
         turma.descricao = descricao
         turma.ativo = ativo
@@ -94,7 +94,7 @@ class TurmaController:
         db.session.commit()
         
         mensagem = {"Mensagem": "Turma Atualizada com Sucesso!"}
-        return jsonify(mensagem), 201
+        return jsonify(mensagem), 200
     
     @staticmethod
     def deletar_turma(turma_id):
@@ -102,13 +102,13 @@ class TurmaController:
         turma = Turma.query.get(turma_id)
         if turma is None:
             mensagem = {"Erro": "Turma Não Cadastrada!"}
-            return jsonify(mensagem), 200
+            return jsonify(mensagem), 404
         
         if turma.alunos:
-           return jsonify({"Erro": "Turma com Aluno Vinculado!"}), 400
+           return jsonify({"Erro": "Turma com Aluno Vinculado!"}), 404
         
         db.session.delete(turma)
         db.session.commit()
         
         mensagem = {"Mensagem": "Turma Deletada com Sucesso!"}
-        return jsonify(mensagem), 201
+        return jsonify(mensagem), 200

@@ -15,7 +15,7 @@ class ProfessorController:
             return jsonify(lista), 200
         else:
             mensagem = {"Erro": "Lista de Professores Vazia!"}
-            return jsonify(mensagem), 200
+            return jsonify(mensagem), 404
         
     @staticmethod
     def exibir_professor(professor_id):
@@ -24,7 +24,7 @@ class ProfessorController:
             return jsonify(professor.para_dicionario()), 200
         else:
             mensagem = {"Erro": "Professor Não Cadastrado!"}
-            return jsonify(mensagem), 200
+            return jsonify(mensagem), 404
     
     @staticmethod
     def criar_professor():
@@ -39,12 +39,12 @@ class ProfessorController:
 
         if (nome == None or idade == None or materia == None):
             mensagem = {"Erro": "Formulário Incompleto!"}
-            return jsonify(mensagem), 200
+            return jsonify(mensagem), 400
 
         registro_professor = Professor.query.filter_by(nome=nome).first()
         if registro_professor:
             mensagem = {"Erro": "Professor Já Cadastrado!"}
-            return jsonify(mensagem), 200
+            return jsonify(mensagem), 409
 
         novo_professor = Professor(
             nome = nome,
@@ -68,7 +68,7 @@ class ProfessorController:
         professor = Professor.query.get(professor_id)
         if professor is None:
             mensagem = {"Erro": "Professor Não Cadastrado!"}
-            return jsonify(mensagem), 200
+            return jsonify(mensagem), 404
         
         nome = dados.get("nome")
         idade = dados.get("idade")
@@ -77,7 +77,7 @@ class ProfessorController:
 
         if (nome == None or idade == None or materia == None):
             mensagem = {"Erro": "Formulário Incompleto!"}
-            return jsonify(mensagem), 200
+            return jsonify(mensagem), 400
       
         professor.nome = nome
         professor.idade = idade 
@@ -87,7 +87,7 @@ class ProfessorController:
         db.session.commit()
         
         mensagem = {"Mensagem": "Professor Atualizado com Sucesso!"}
-        return jsonify(mensagem), 201
+        return jsonify(mensagem), 200
     
     @staticmethod
     def deletar_professor(professor_id):
@@ -95,13 +95,13 @@ class ProfessorController:
         professor = Professor.query.get(professor_id)
         if professor is None:
             mensagem = {"Erro": "Professor Não Cadastrado!"}
-            return jsonify(mensagem), 200
+            return jsonify(mensagem), 404
         
         if professor.turmas:
-            return jsonify({"Erro": "Professor com Turma Vinculada!"}), 400
+            return jsonify({"Erro": "Professor com Turma Vinculada!"}), 404
         
         db.session.delete(professor)
         db.session.commit()
         
         mensagem = {"Mensagem": "Professor Deletado com Sucesso!"}
-        return jsonify(mensagem), 201
+        return jsonify(mensagem), 200

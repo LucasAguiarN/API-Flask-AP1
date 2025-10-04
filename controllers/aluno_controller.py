@@ -17,7 +17,7 @@ class AlunoController:
             return jsonify(lista), 200
         else:
             mensagem = {"Erro": "Lista de Alunos Vazia!"}
-            return jsonify(mensagem), 200
+            return jsonify(mensagem), 404
         
     @staticmethod
     def exibir_aluno(aluno_id):
@@ -26,7 +26,7 @@ class AlunoController:
             return jsonify(aluno.para_dicionario()), 200
         else:
             mensagem = {"Erro": "Aluno Não Cadastrado!"}
-            return jsonify(mensagem), 200
+            return jsonify(mensagem), 404
     
     @staticmethod
     def criar_aluno():
@@ -43,19 +43,19 @@ class AlunoController:
 
         if (nome == None or idade == None or data == None or nota_1semestre == None or nota_2semestre == None or turma_id == None):
             mensagem = {"Erro": "Formulário Incompleto!"}
-            return jsonify(mensagem), 200
+            return jsonify(mensagem), 400
         media =  (int(nota_1semestre) + int(nota_2semestre)) / 2
         data_nasc = datetime.strptime(data, "%d/%m/%Y").date()
 
         registro_alunos = Aluno.query.filter_by(nome=nome).first()
         if registro_alunos:
             mensagem = {"Erro": "Aluno Já Cadastrado!"}
-            return jsonify(mensagem), 200
+            return jsonify(mensagem), 409
         
         registro_turmas = Turma.query.filter_by(id=turma_id).first()
         if not registro_turmas:
             mensagem = {"Erro": "Turma Não Cadastrada!"}
-            return jsonify(mensagem), 200
+            return jsonify(mensagem), 404
 
         novo_aluno = Aluno(
             nome = nome,
@@ -82,7 +82,7 @@ class AlunoController:
         aluno = Aluno.query.get(aluno_id)
         if aluno is None:
             mensagem = {"Erro": "Aluno Não Cadastrado!"}
-            return jsonify(mensagem), 200
+            return jsonify(mensagem), 404
         
         nome = dados.get("nome")
         idade = dados.get("idade")
@@ -93,14 +93,14 @@ class AlunoController:
 
         if (nome == None or idade == None or data == None or nota_1semestre == None or nota_2semestre == None or turma_id == None):
             mensagem = {"Erro": "Formulário Incompleto!"}
-            return jsonify(mensagem), 200
+            return jsonify(mensagem), 400
         media =  (int(nota_1semestre) + int(nota_2semestre)) / 2
         data_nasc = datetime.strptime(data, "%d/%m/%Y").date()
       
         registro_turmas = Turma.query.filter_by(id=turma_id).first()
         if not registro_turmas:
             mensagem = {"Erro": "Turma Não Cadastrada!"}
-            return jsonify(mensagem), 200
+            return jsonify(mensagem), 404
 
         aluno.nome = nome
         aluno.idade = idade 
@@ -113,7 +113,7 @@ class AlunoController:
         db.session.commit()
         
         mensagem = {"Mensagem": "Aluno Atualizado com Sucesso!"}
-        return jsonify(mensagem), 201
+        return jsonify(mensagem), 200
     
     @staticmethod
     def deletar_aluno(aluno_id):
@@ -121,10 +121,10 @@ class AlunoController:
         aluno = Aluno.query.get(aluno_id)
         if aluno is None:
             mensagem = {"Erro": "Aluno Não Cadastrado!"}
-            return jsonify(mensagem), 200
+            return jsonify(mensagem), 404
         
         db.session.delete(aluno)
         db.session.commit()
         
         mensagem = {"Mensagem": "Aluno Deletado com Sucesso!"}
-        return jsonify(mensagem), 201
+        return jsonify(mensagem), 200
