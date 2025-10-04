@@ -10,10 +10,47 @@ schemes:
   - http
 
 tags:
+  - name: Professores
+    description: Operações Relacionadas a Entidade Professores
+  - name: Turmas
+    description: Operações Relacionadas a Entidade Turmas  
   - name: Alunos
     description: Operações Relacionadas a Entidade Alunos
 
 definitions:
+  Professor:
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 1
+      nome:
+        type: string
+        example: "Carlos"
+      idade:
+        type: integer
+        example: 32
+      materia:
+        type: string
+        example: "Microserviços"
+      observacoes:
+        type: string
+        example: "Professor com MBA em Redes"
+  Turma:
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 1
+      descricao:
+        type: string
+        example: ADS Periodo Manha
+      ativo:
+        type: boolean
+        example: "True"
+      professor_id:
+        type: integer
+        example: 1
   Aluno:
     type: object
     properties:
@@ -43,6 +80,35 @@ definitions:
         type: integer
         example: 1
 
+  ProfessorInput:
+    type: object
+    required: [nome, idade, materia]
+    properties:
+      nome:
+        type: string
+        example: "Carlos"
+      idade:
+        type: integer
+        example: 32
+      materia:
+        type: string
+        example: "Microserviços"
+      observacoes:
+        type: string
+        example: ""
+  TurmaInput:
+    type: object
+    required: [descricao, ativo, professor_id]
+    properties:
+      descricao:
+        type: string
+        example: ADS Periodo Manha
+      ativo:
+        type: boolean
+        example: "True"
+      professor_id:
+        type: integer
+        example: 1
   AlunoInput:
     type: object
     required: [nome, idade, data_nasc, nota_1semestre, nota_2semestre, turma_id]
