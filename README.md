@@ -85,11 +85,11 @@ curl -X POST http://localhost:5000/alunos \
 ```
 Exibir Aluno
 ```bash
-curl -X GET http://localhost:5000/aluno/{aluno_id}
+curl -X GET http://localhost:5000/alunos/{aluno_id}
 ```
 Atualizar Aluno
 ```bash
-curl -X PUT http://localhost:5000/alunos/atualizar/{aluno_id} \
+curl -X PUT http://localhost:5000/alunos/{aluno_id} \
     -H "Content-Type: application/json" \
     -d '{
           "nome":"Lucas",
@@ -102,7 +102,7 @@ curl -X PUT http://localhost:5000/alunos/atualizar/{aluno_id} \
 ```
 Deletar Alunos
 ```bash
-curl -X DELETE http://localhost:5000/alunos/deletar/{aluno_id}
+curl -X DELETE http://localhost:5000/alunos/{aluno_id}
 ```
 Listagem de Professores
 ```bash
@@ -121,11 +121,11 @@ curl -X POST http://localhost:5000/professores \
 ```
 Exibir Professor
 ```bash
-curl -X GET http://localhost:5000/professor/{professor_id}
+curl -X GET http://localhost:5000/professores/{professor_id}
 ```
 Atualizar Professor
 ```bash
-curl -X PUT http://localhost:5000/professores/atualizar/{professor_id} \
+curl -X PUT http://localhost:5000/professores/{professor_id} \
     -H "Content-Type: application/json" \
     -d '{
           "nome":"Carlos",
@@ -136,7 +136,7 @@ curl -X PUT http://localhost:5000/professores/atualizar/{professor_id} \
 ```
 Deletar Professor
 ```bash
-curl -X DELETE http://localhost:5000/professores/deletar/{professor_id}
+curl -X DELETE http://localhost:5000/professores/{professor_id}
 ```
 Listagem de Turmas
 ```bash
@@ -154,11 +154,11 @@ curl -X POST http://localhost:5000/turmas \
 ```
 Exibir Turma
 ```bash
-curl -X GET http://localhost:5000/turma/{turma_id}
+curl -X GET http://localhost:5000/turmas/{turma_id}
 ```
 Atualizar Turma
 ```bash
-curl -X PUT http://localhost:5000/turmas/atualizar/{turma_id} \
+curl -X PUT http://localhost:5000/turmas/{turma_id} \
     -H "Content-Type: application/json" \
     -d '{
           "descricao":"ADS Periodo Manha", 
@@ -168,7 +168,7 @@ curl -X PUT http://localhost:5000/turmas/atualizar/{turma_id} \
 ```
 Deletar Turma
 ```bash
-curl -X DELETE http://localhost:5000/turmas/deletar/{turma_id}
+curl -X DELETE http://localhost:5000/turmas/{turma_id}
 ```
 
 <h2 id="licença">📜 Licença</h2>
