@@ -66,43 +66,9 @@ pip install -r requirements.txt
 
 <h2 id="endpoints">🛠️ Endpoints da API</h2>
 
-Listagem de Alunos
+Documentação Swagger
 ```bash
-curl -X GET http://localhost:5000/alunos
-```
-Cadastro de Alunos
-```bash
-curl -X POST http://localhost:5000/alunos \
-    -H "Content-Type: application/json" \
-    -d '{
-          "nome":"Lucas",
-          "idade":"27", 
-          "data_nasc":"18/11/1998",
-          "nota_1semestre":"10",
-          "nota_2semestre":"8",
-          "turma_id":"1"
-        }'
-```
-Exibir Aluno
-```bash
-curl -X GET http://localhost:5000/alunos/{aluno_id}
-```
-Atualizar Aluno
-```bash
-curl -X PUT http://localhost:5000/alunos/{aluno_id} \
-    -H "Content-Type: application/json" \
-    -d '{
-          "nome":"Lucas",
-          "idade":"27", 
-          "data_nasc":"18/11/1998",
-          "nota_1semestre":"8",
-          "nota_2semestre":"8",
-          "turma_id":"1"
-        }'
-```
-Deletar Alunos
-```bash
-curl -X DELETE http://localhost:5000/alunos/{aluno_id}
+curl -X GET http://localhost:5000/apidocs
 ```
 Listagem de Professores
 ```bash
@@ -169,6 +135,44 @@ curl -X PUT http://localhost:5000/turmas/{turma_id} \
 Deletar Turma
 ```bash
 curl -X DELETE http://localhost:5000/turmas/{turma_id}
+```
+Listagem de Alunos
+```bash
+curl -X GET http://localhost:5000/alunos
+```
+Cadastro de Alunos
+```bash
+curl -X POST http://localhost:5000/alunos \
+    -H "Content-Type: application/json" \
+    -d '{
+          "nome":"Lucas",
+          "idade":"27", 
+          "data_nasc":"18/11/1998",
+          "nota_1semestre":"10",
+          "nota_2semestre":"8",
+          "turma_id":"1"
+        }'
+```
+Exibir Aluno
+```bash
+curl -X GET http://localhost:5000/alunos/{aluno_id}
+```
+Atualizar Aluno
+```bash
+curl -X PUT http://localhost:5000/alunos/{aluno_id} \
+    -H "Content-Type: application/json" \
+    -d '{
+          "nome":"Lucas",
+          "idade":"27", 
+          "data_nasc":"18/11/1998",
+          "nota_1semestre":"8",
+          "nota_2semestre":"8",
+          "turma_id":"1"
+        }'
+```
+Deletar Alunos
+```bash
+curl -X DELETE http://localhost:5000/alunos/{aluno_id}
 ```
 
 <h2 id="licença">📜 Licença</h2>
