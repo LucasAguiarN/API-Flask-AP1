@@ -32,22 +32,22 @@ O projeto consiste em uma API RESTful construída com Flask para realizar o gere
 
 <h2 id="requisitos">📦 Requisitos</h2>
 
-[![Docker](https://badgen.net/badge/icon/docker?icon=docker&label)](https://https://docker.com/) 
+[![Docker](https://badgen.net/badge/icon/docker?icon=docker&label)](https://https://docker.com/) <img src="https://img.shields.io/badge/python-3.13.2-blue" alt="Python = 3.13.2"><br>
 
 Tenha o Docker instalado caso queria rodar o projeto num container
 
-No diretório raiz do projeto, construa a imagem do container:
+No diretório raiz do projeto, construa a imagem do container
 ```bash
 docker build -t school-manager .
 ```
-Execute o container:
+Execute o container
 ```bash
 docker run --name school-manager-container -p 5000:5000 school-manager
 ```
-<br>
-<img src="https://img.shields.io/badge/python-3.13.2-blue" alt="Python = 3.13.2">
 
-```
+Para rodar localmente sem ser via container tenho o Python instalado e no diretório raiz do projeto execute o comando para instalar as bibliotecas<br>
+
+```bash
 pip install -r requirements.txt
 ```
 
