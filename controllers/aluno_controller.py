@@ -55,7 +55,7 @@ class AlunoController:
         registro_turmas = Turma.query.filter_by(id=turma_id).first()
         if not registro_turmas:
             mensagem = {"Erro": "Turma Não Cadastrada!"}
-            return jsonify(mensagem), 404
+            return jsonify(mensagem), 422
 
         novo_aluno = Aluno(
             nome = nome,
@@ -100,7 +100,7 @@ class AlunoController:
         registro_turmas = Turma.query.filter_by(id=turma_id).first()
         if not registro_turmas:
             mensagem = {"Erro": "Turma Não Cadastrada!"}
-            return jsonify(mensagem), 404
+            return jsonify(mensagem), 422
 
         aluno.nome = nome
         aluno.idade = idade 

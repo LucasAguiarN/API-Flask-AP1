@@ -49,7 +49,7 @@ class TurmaController:
         registro_professor = Professor.query.filter_by(id=professor_id).first()
         if not registro_professor:
             mensagem = {"Erro": "Professor Não Cadastrado!"}
-            return jsonify(mensagem), 404
+            return jsonify(mensagem), 422
 
         nova_turma = Turma(
             descricao = descricao,
@@ -85,7 +85,7 @@ class TurmaController:
         registro_professor = Professor.query.filter_by(id=professor_id).first()
         if not registro_professor:
             mensagem = {"Erro": "Professor Não Cadastrado!"}
-            return jsonify(mensagem), 404
+            return jsonify(mensagem), 422
 
         turma.descricao = descricao
         turma.ativo = ativo
