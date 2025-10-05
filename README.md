@@ -3,7 +3,7 @@
 <h3 align="center"><img  alt="Faculdade Impacta" width = "400px" src="https://www.impacta.edu.br/themes/wc_agenciar3/images/logo-new.png"></h3>
 
 <p>
-    <img src="https://img.shields.io/badge/Status-Em_Desenvolvimento-orange" alt="Status = Em Desenvolvimento">
+    <img src="https://img.shields.io/badge/Status-Concluído-brightgreen" alt="Status = Concluído">
     <img src="https://img.shields.io/badge/Documentação-Em_Andamento-yellow" alt="Documentação: Em Andamento">
     <img src="https://img.shields.io/badge/License-MIT-blue" alt="License = MIT">
 </p>
@@ -26,10 +26,26 @@
 </p>
 
 <h2 id="sobre">📖 Sobre</h2>
-API referente a Atividade Avaliativa 1 da Disciplina de Desenvolvimento de APIs e Microsserviços, ministrada pelo professor Giovani Bontempo na Faculdade Impacta, durante o terceiro semestre do curso Análise e Desenvolvimento de Sistemas cursado no 2º Semestre de 2025.
+API referente ao Projeto Acadêmico da Disciplina de Desenvolvimento de APIs e Microsserviços, ministrada pelo professor Giovani Bontempo na Faculdade Impacta, durante o terceiro semestre do curso Análise e Desenvolvimento de Sistemas cursado no 2º Semestre de 2025.
+O projeto consiste em uma API RESTful construída com Flask para realizar o gerenciamento de Professores, Turmas e Alunos de uma instituição de ensino.
 <br>
 
 <h2 id="requisitos">📦 Requisitos</h2>
+
+[![Docker](https://badgen.net/badge/icon/docker?icon=docker&label)](https://https://docker.com/) 
+
+Tenha o Docker instalado caso queria rodar o projeto num container
+
+No diretório raiz do projeto, construa a imagem do container:
+```bash
+docker build -t school-manager .
+```
+Execute o container:
+```bash
+docker run --name school-manager-container -p 5000:5000 school-manager
+```
+<br>
+<img src="https://img.shields.io/badge/python-3.13.2-blue" alt="Python = 3.13.2">
 
 ```
 pip install -r requirements.txt
