@@ -633,22 +633,3 @@ paths:
               Erro:
                 type: string
                 example: "Aluno Não Cadastrado!"
-
-# tags - Agrupar Endpoints (Alunos, Turmas, Professores)
-# parameters - Parametros da Rota - POST/PUT
-  # pode ter name; in; type; required; description
-  # in: path - parametro na URL
-  # in: body - JSON enviado
-# schema - formato de entrada e saída JSON
-  # type: object or array
-  # properties: campos que pertencem ao objeto
-  # required
-  # example: exemplo de valor
-# responses define http esperado e formato de resposta
-
-# http
-  # 200 - Sucesso GET / PUT / DELETE
-  # 201 - Sucesso POST
-  # 400 - Erro de Validação - Dados Insuficientes
-  # 404 - Não encotrar recurso - Lista Vazia ou usuario ñ encontrado
-  # 409 - já cadastrado
