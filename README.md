@@ -30,28 +30,7 @@ API referente ao Projeto Acadêmico da Disciplina de Desenvolvimento de APIs e M
 O projeto consiste em uma API RESTful construída com Flask para realizar o gerenciamento de Professores, Turmas e Alunos de uma instituição de ensino.
 <br>
 
-<h2 id="requisitos">📦 Requisitos</h2>
-
-[![Docker](https://badgen.net/badge/icon/docker?icon=docker&label)](https://https://docker.com/) <img src="https://img.shields.io/badge/python-3.13.2-blue" alt="Python = 3.13.2"><br>
-
-Tenha o Docker instalado caso queria rodar o projeto num container
-
-No diretório raiz do projeto, construa a imagem do container
-```bash
-docker build -t school-manager .
-```
-Execute o container
-```bash
-docker run --name school-manager-container -p 5000:5000 school-manager
-```
-
-Para rodar localmente sem ser via container tenho o Python instalado e no diretório raiz do projeto execute o comando para instalar as bibliotecas<br>
-
-```bash
-pip install -r requirements.txt
-```
-
-<h2 id="grupo" align="center">👥 Integrantes do Grupo 12</h2>
+<h2 id="grupo">👥 Integrantes do Grupo 12</h2>
 <table align="center">
   <tr>
     <td align="center">
@@ -74,6 +53,27 @@ pip install -r requirements.txt
     </td>
   </tr>
 </table>
+
+<h2 id="requisitos">📦 Requisitos</h2>
+
+[![Docker](https://badgen.net/badge/icon/docker?icon=docker&label)](https://https://docker.com/) <img src="https://img.shields.io/badge/python-3.13.2-blue" alt="Python = 3.13.2"><br>
+
+Tenha o Docker instalado caso queria rodar o projeto num container
+
+No diretório raiz do projeto, construa a imagem do container
+```bash
+docker build -t school-manager .
+```
+Execute o container
+```bash
+docker run --name school-manager-container -p 5000:5000 school-manager
+```
+
+Para rodar localmente sem ser via container tenho o Python instalado e no diretório raiz do projeto execute o comando para instalar as bibliotecas<br>
+
+```bash
+pip install -r requirements.txt
+```
 
 <h2 id="how-it-works">⚙️ Funcionalidades</h2>
 🔹 CRUD de Alunos (Cadastro, Listagem, Atualização e Exclusão)
