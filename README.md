@@ -30,7 +30,7 @@ API referente ao Projeto Acadêmico da Disciplina de Desenvolvimento de APIs e M
 O projeto consiste em uma API RESTful construída com Flask para realizar o gerenciamento de Professores, Turmas e Alunos de uma instituição de ensino.
 <br>
 
-<h2 id="grupo">👥 Integrantes do Grupo 12</h2>
+<h2 id="grupo">👥 Integrantes do Grupo</h2>
 <table align="center">
   <tr>
     <td align="center">
