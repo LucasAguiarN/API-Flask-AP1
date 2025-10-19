@@ -8,12 +8,24 @@ class TurmaController:
     
     @staticmethod
     def listar_turmas():
+        """
+        Lista todas as turmas cadastradas no Banco de Dados.
+
+        Retorna:
+            - Se houver registros retorna JSON contendo a lista de turmas e código HTTP 200
+            - Se não houver registros retorna JSON com mensagem de erro e código HTTP 404
+        """
+
+        # Consulta registros da tabela "Turma" usando SQLAlchemy e salvar em turmas
         turmas = Turma.query.all()
+
+        # Se houver turmas cadastradas
         if turmas:
             lista = []
             for turma in turmas:
                 lista.append(turma.para_dicionario())
             return jsonify(lista), 200
+        # Se não houver turmas cadastradas
         else:
             mensagem = {"Erro": "Lista de Turmas Vazia!"}
             return jsonify(mensagem), 404

@@ -7,6 +7,15 @@ class ProfessorController:
     
     @staticmethod
     def listar_professores():
+        """
+        Lista todos os professores cadastrados no Banco de Dados.
+
+        Retorna:
+            - Se houver registros retorna JSON contendo a lista de professores e código HTTP 200
+            - Se não houver registros retorna JSON com mensagem de erro e código HTTP 404
+        """
+
+        
         professores = Professor.query.all()
         if professores:
             lista = []

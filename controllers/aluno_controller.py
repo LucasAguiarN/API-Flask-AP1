@@ -9,6 +9,15 @@ class AlunoController:
     
     @staticmethod
     def listar_alunos():
+        """
+        Lista todos os alunos cadastrados no Banco de Dados.
+
+        Retorna:
+            - Se houver registros retorna JSON contendo a lista de alunos e código HTTP 200
+            - Se não houver registros retorna JSON com mensagem de erro e código HTTP 404
+        """
+
+
         alunos = Aluno.query.all()
         if alunos:
             lista = []
