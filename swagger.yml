@@ -266,7 +266,7 @@ paths:
         - Professores
       summary: Deletar Cadastro Professor
       operationId: deleteProfessor
-      description: Deletar cadastro de Professor no sistema e retornar mensagem confirmando a exclusão ou retorna mensagem informando que não encontrou esse professor
+      description: Deletar cadastro de Professor no sistema e retornar mensagem confirmando a exclusão ou retorna mensagem referente aos erros de que não encontrou esse professor ou professor vinculado a turma ativa
       parameters:
         - name: professor_id
           in: path
@@ -289,6 +289,14 @@ paths:
               Erro:
                 type: string
                 example: "Professor Não Cadastrado!"
+        409:
+          description: Professor vinculado a turma ativa
+          schema:
+            type: object
+            properties:
+              Erro:
+                type: string
+                example: "Professor com Turma Vinculada!"
 
 # Turmas
   /turmas:
@@ -438,7 +446,7 @@ paths:
         - Turmas
       summary: Deletar Cadastro Turma
       operationId: deleteTurma
-      description: Deletar cadastro de Turma no sistema e retornar mensagem informando que não encontrou essa turma
+      description: Deletar cadastro de Turma no sistema e retornar mensagem confirmando a exclusão ou retornar mensagem referente aos erros de não encontrar a turma ou Aluno vinculado a turma
       parameters:
         - name: turma_id
           in: path
@@ -461,6 +469,14 @@ paths:
               Erro:
                 type: string
                 example: "Turma Não Cadastrada!"
+        409:
+          description: Turma com registro de aluno ativo
+          schema:
+            type: object
+            properties:
+              Erro:
+                type: string
+                example: "Turma com Aluno Vinculado!"
 
 # Alunos
   /alunos:
@@ -610,7 +626,7 @@ paths:
         - Alunos
       summary: Deletar Cadastro Aluno
       operationId: deleteAluno
-      description: Deletar cadastro de Aluno no sistema e retornar etorna mensagem informando que não encontrou esse aluno
+      description: Deletar cadastro de Aluno no sistema e retornar mensagem confirmando a exclusão ou retornar mensagem informando que não encontrou esse aluno
       parameters:
         - name: aluno_id
           in: path

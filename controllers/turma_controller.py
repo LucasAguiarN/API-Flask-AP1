@@ -3,26 +3,27 @@ from models import db
 from models.professor import Professor
 from models.turma import Turma
 
-
+# Classe responsável por controlar as ações relacionadas a turmas
 class TurmaController:
     
     @staticmethod
     def listar_turmas():
         """
-        Lista todas as turmas cadastradas no Banco de Dados.
+        Lista todas as turmas cadastradas no Banco de Dados
 
         Retorna:
             - Se houver registros retorna JSON contendo a lista de turmas e código HTTP 200
             - Se não houver registros retorna JSON com mensagem de erro e código HTTP 404
         """
 
-        # Consulta registros da tabela "Turma" usando SQLAlchemy e salvar em turmas
+        # Consulta registros da tabela "Turma" usando SQLAlchemy e salva em turmas
         turmas = Turma.query.all()
 
         # Se houver turmas cadastradas
         if turmas:
             lista = []
             for turma in turmas:
+                # Converte para dicionario e adiciona na lista
                 lista.append(turma.para_dicionario())
             return jsonify(lista), 200
         # Se não houver turmas cadastradas
@@ -31,10 +32,26 @@ class TurmaController:
             return jsonify(mensagem), 404
         
     @staticmethod
-    def exibir_turma(turma_id):
+    def exibir_turma(turma_id):  
+        """
+        Exibe os dados de uma turma específica com base no ID informado
+
+        Parâmetros:
+            turma_id (int): ID da turma a ser consultada
+
+        Retorna:
+            - Se a turma for encontrada retorna JSON com seus dados e código HTTP 200
+            - Se não for encontrada retorna JSON com mensagem de erro e código HTTP 404
+        """
+
+        # Busca uma turma pelo ID usando SQLAlchemy e salva em turma 
         turma = Turma.query.get(turma_id)
+
+        # Se a turma for encontrada
         if turma:
+            # Converte para dicionario e retorna como JSON
             return jsonify(turma.para_dicionario()), 200
+        # Se a turma não existir no banco de dados
         else:
             mensagem = {"Erro": "Turma Não Cadastrada!"}
             return jsonify(mensagem), 404
@@ -110,15 +127,31 @@ class TurmaController:
     
     @staticmethod
     def deletar_turma(turma_id):
+        """
+        Delete os dados de uma turma específica com base no ID informado
 
+        Parâmetros:
+            turma_id (int): ID da turma a ser deletada
+
+        Retorna:
+            - Se a turma for encontrada retorna JSON com mensagem confirmando a exclusão e código HTTP 200
+            - Se existir aluno cadastrado na turma retorna JSON com mensagem de erro e código HTTP 409
+            - Se não for encontrada retorna JSON com mensagem de erro e código HTTP 404
+        """
+
+        # Busca uma turma pelo ID usando SQLAlchemy e salva em turma
         turma = Turma.query.get(turma_id)
+
+        # Se a turma não for encontrada
         if turma is None:
             mensagem = {"Erro": "Turma Não Cadastrada!"}
             return jsonify(mensagem), 404
         
+        # Se existir aluno cadastrado na turma
         if turma.alunos:
-           return jsonify({"Erro": "Turma com Aluno Vinculado!"}), 404
+           return jsonify({"Erro": "Turma com Aluno Vinculado!"}), 409
         
+        # Deletar registro no Banco de Dados
         db.session.delete(turma)
         db.session.commit()
         

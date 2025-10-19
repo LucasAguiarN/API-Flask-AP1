@@ -4,7 +4,7 @@ from models.aluno import Aluno
 from models.turma import Turma
 from datetime import datetime
 
-
+# Classe responsável por controlar as ações relacionadas aos alunos
 class AlunoController:
     
     @staticmethod
@@ -17,22 +17,42 @@ class AlunoController:
             - Se não houver registros retorna JSON com mensagem de erro e código HTTP 404
         """
 
-
+        # Consulta registros da tabela "Aluno" usando SQLAlchemy e salva em alunos
         alunos = Aluno.query.all()
+
+        # Se houver alunos cadastrados
         if alunos:
             lista = []
             for aluno in alunos:
+                # Converte para dicionario e adiciona na lista
                 lista.append(aluno.para_dicionario())
             return jsonify(lista), 200
+        # Se não houver alunos cadastrados
         else:
             mensagem = {"Erro": "Lista de Alunos Vazia!"}
             return jsonify(mensagem), 404
         
     @staticmethod
     def exibir_aluno(aluno_id):
+        """
+        Exibe os dados de um aluno específico com base no ID informado
+
+        Parâmetros:
+            aluno_id (int): ID do aluno a ser consultado
+
+        Retorna:
+            - Se o aluno for encontrado retorna JSON com seus dados e código HTTP 200
+            - Se não for encontrado retorna JSON com mensagem de erro e código HTTP 404
+        """
+
+        # Busca um aluno pelo ID usando SQLAlchemy e salva em aluno 
         aluno = Aluno.query.get(aluno_id)
+
+        # Se o aluno for encontrado
         if aluno:
+            # Converte para dicionario e retorna como JSON
             return jsonify(aluno.para_dicionario()), 200
+        # Se o aluno não existir no banco de dados
         else:
             mensagem = {"Erro": "Aluno Não Cadastrado!"}
             return jsonify(mensagem), 404
@@ -126,12 +146,26 @@ class AlunoController:
     
     @staticmethod
     def deletar_aluno(aluno_id):
+        """
+        Delete os dados de um aluno específico com base no ID informado
 
+        Parâmetros:
+            aluno_id (int): ID do aluno a ser deletado
+
+        Retorna:
+            - Se o aluno for encontrado retorna JSON com mensagem confirmando a exclusão e código HTTP 200
+            - Se não for encontrado retorna JSON com mensagem de erro e código HTTP 404
+        """
+
+        # Busca um aluno pelo ID usando SQLAlchemy e salva em aluno
         aluno = Aluno.query.get(aluno_id)
+
+        # Se o aluno não for encontrado
         if aluno is None:
             mensagem = {"Erro": "Aluno Não Cadastrado!"}
             return jsonify(mensagem), 404
         
+        # Deletar registro no Banco de Dados
         db.session.delete(aluno)
         db.session.commit()
         
