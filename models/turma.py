@@ -14,7 +14,7 @@ class Turma(db.Model):
 
     professor_id = db.Column(db.Integer, db.ForeignKey("professores.id"), nullable=False)
 
-    # Relacionamento Muitos-para-Um (N:1) com Tabela Professor
+    # Relacionamento Muitos-para-Um (N-1) com Tabela Professor
     professor = db.relationship("Professor", back_populates="turmas")
 
     # Relacionamento Um-para-Muitos (1-N) com Tabela Aluno

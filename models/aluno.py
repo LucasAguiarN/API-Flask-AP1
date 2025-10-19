@@ -5,7 +5,7 @@ from models import db   # Importa a instância do ORM que acessa o Banco de Dado
 class Aluno(db.Model):
 
     # Nome da Tabela
-    __tablename__ = 'aluno'
+    __tablename__ = 'alunos'
 
     # Colunas da Tabela
     id = db.Column(db.Integer, primary_key=True)
@@ -18,7 +18,7 @@ class Aluno(db.Model):
 
     turma_id = db.Column(db.Integer, db.ForeignKey("turmas.id"), nullable=False)
 
-    # Relacionamento Muitos-para-Um (N:1) com Tabela Turma
+    # Relacionamento Muitos-para-Um (N-1) com Tabela Turma
     turma = db.relationship("Turma", back_populates="alunos")
     
     # Converter atributos da classe em um dicionário para envio em JSON
