@@ -128,8 +128,8 @@ class ProfessorController:
 
         Retorna:
             - Se o professor for encontrado retorna JSON com mensagem confirmando a exclusão e código HTTP 200
-            - Se existir turma vinculada ao professor retorna JSON com mensagem de erro e código HTTP 409
             - Se não for encontrado retorna JSON com mensagem de erro e código HTTP 404
+            - Se existir turma vinculada ao professor retorna JSON com mensagem de erro e código HTTP 409
         """
 
         # Busca um professor pelo ID usando SQLAlchemy e salva em professor

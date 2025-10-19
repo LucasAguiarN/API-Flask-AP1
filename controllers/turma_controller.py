@@ -135,8 +135,8 @@ class TurmaController:
 
         Retorna:
             - Se a turma for encontrada retorna JSON com mensagem confirmando a exclusão e código HTTP 200
-            - Se existir aluno cadastrado na turma retorna JSON com mensagem de erro e código HTTP 409
             - Se não for encontrada retorna JSON com mensagem de erro e código HTTP 404
+            - Se existir aluno cadastrado na turma retorna JSON com mensagem de erro e código HTTP 409
         """
 
         # Busca uma turma pelo ID usando SQLAlchemy e salva em turma
