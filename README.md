@@ -27,7 +27,7 @@
 
 <h2 id="sobre">📖 Sobre</h2>
 API referente ao Projeto Acadêmico da Disciplina de Desenvolvimento de APIs e Microsserviços, ministrada pelo professor Giovani Bontempo na Faculdade Impacta, durante o terceiro semestre do curso Análise e Desenvolvimento de Sistemas cursado no 2º Semestre de 2025.
-O projeto consiste em uma API RESTful construída com Flask para realizar o gerenciamento de Professores, Turmas e Alunos de uma instituição de ensino.
+<br><br>O projeto consiste em uma API RESTful construída com Flask para realizar o gerenciamento de Professores, Turmas e Alunos de uma instituição de ensino.
 <br>
 
 <h2 id="grupo">👥 Integrantes do Grupo</h2>
