@@ -1,4 +1,4 @@
-from models import db
+from models import db   # Importa a instância do ORM que acessa o Banco de Dados
 
 
 # Class que vira uma Tabela no Banco de Dados
@@ -20,10 +20,8 @@ class Aluno(db.Model):
 
     # Relacionamento Muitos-para-Um (N:1) com Tabela Turma
     turma = db.relationship("Turma", back_populates="alunos")
-
-    def __repr__(self):
-        return f"<Aluno {self.nome} ID: {self.id}>"
     
+    # Converter atributos da classe em um dicionário para envio em JSON
     def para_dicionario(self):
         dados = {
             "id": self.id,
@@ -35,4 +33,4 @@ class Aluno(db.Model):
             "media": self.media,
             "turma_id": self.turma_id
         }
-        return dados
+        return dados    # Retorna dicionário
