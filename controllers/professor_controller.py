@@ -1,4 +1,5 @@
 from flask import jsonify, request
+from flasgger import swag_from
 from models import db
 from models.professor import Professor
 
@@ -6,6 +7,7 @@ from models.professor import Professor
 class ProfessorController:
     
     @staticmethod
+    @swag_from('./swagger.yml', endpoint='/professores', methods=['GET'])
     def listar_professores():
         """
         Lista todos os professores cadastrados no Banco de Dados.
@@ -31,6 +33,7 @@ class ProfessorController:
             return jsonify(mensagem), 404
         
     @staticmethod
+    @swag_from('./swagger.yml', endpoint='/professores/<int:professor_id>', methods=['GET'])
     def exibir_professor(professor_id):
         """
         Exibe os dados de um professor específico com base no ID informado
@@ -56,6 +59,7 @@ class ProfessorController:
             return jsonify(mensagem), 404
     
     @staticmethod
+    @swag_from('./swagger.yml', endpoint='/professores', methods=['POST'])
     def criar_professor():
         dados = request.json
         if not dados:
@@ -89,6 +93,7 @@ class ProfessorController:
         return jsonify(mensagem), 201
     
     @staticmethod
+    @swag_from('./swagger.yml', endpoint='/professores/<int:professor_id>', methods=['PUT'])
     def atualizar_professor(professor_id):
         dados = request.json
         if not dados:
@@ -119,6 +124,7 @@ class ProfessorController:
         return jsonify(mensagem), 200
     
     @staticmethod
+    @swag_from('./swagger.yml', endpoint='/professores/<int:professor_id>', methods=['DELETE'])
     def deletar_professor(professor_id):
         """
         Delete os dados de um professor específico com base no ID informado

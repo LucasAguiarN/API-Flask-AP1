@@ -1,4 +1,5 @@
 from flask import jsonify, request
+from flasgger import swag_from
 from models import db
 from models.professor import Professor
 from models.turma import Turma
@@ -7,6 +8,7 @@ from models.turma import Turma
 class TurmaController:
     
     @staticmethod
+    @swag_from('./swagger.yml', endpoint='/turmas', methods=['GET'])
     def listar_turmas():
         """
         Lista todas as turmas cadastradas no Banco de Dados
@@ -32,6 +34,7 @@ class TurmaController:
             return jsonify(mensagem), 404
         
     @staticmethod
+    @swag_from('./swagger.yml', endpoint='/turmas/<int:turma_id>', methods=['GET'])
     def exibir_turma(turma_id):  
         """
         Exibe os dados de uma turma específica com base no ID informado
@@ -57,6 +60,7 @@ class TurmaController:
             return jsonify(mensagem), 404
     
     @staticmethod
+    @swag_from('./swagger.yml', endpoint='/turmas', methods=['POST'])
     def criar_turma():
         dados = request.json
         if not dados:
@@ -93,6 +97,7 @@ class TurmaController:
         return jsonify(mensagem), 201
     
     @staticmethod
+    @swag_from('./swagger.yml', endpoint='/turmas/<int:turma_id>', methods=['PUT'])
     def atualizar_turma(turma_id):
         dados = request.json
         if not dados:
@@ -126,6 +131,7 @@ class TurmaController:
         return jsonify(mensagem), 200
     
     @staticmethod
+    @swag_from('./swagger.yml', endpoint='/turmas/<int:turma_id>', methods=['DELETE'])
     def deletar_turma(turma_id):
         """
         Delete os dados de uma turma específica com base no ID informado

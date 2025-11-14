@@ -1,4 +1,5 @@
 from flask import jsonify, request
+from flasgger import swag_from
 from models import db
 from models.aluno import Aluno
 from models.turma import Turma
@@ -8,6 +9,7 @@ from datetime import datetime
 class AlunoController:
     
     @staticmethod
+    @swag_from('./swagger.yml', endpoint='/alunos', methods=['GET'])
     def listar_alunos():
         """
         Lista todos os alunos cadastrados no Banco de Dados.
@@ -33,6 +35,7 @@ class AlunoController:
             return jsonify(mensagem), 404
         
     @staticmethod
+    @swag_from('./swagger.yml', endpoint='/alunos/<int:aluno_id>', methods=['GET'])
     def exibir_aluno(aluno_id):
         """
         Exibe os dados de um aluno específico com base no ID informado
@@ -58,6 +61,7 @@ class AlunoController:
             return jsonify(mensagem), 404
     
     @staticmethod
+    @swag_from('./swagger.yml', endpoint='/alunos', methods=['POST'])
     def criar_aluno():
         dados = request.json
         if not dados:
@@ -103,6 +107,7 @@ class AlunoController:
         return jsonify(mensagem), 201
     
     @staticmethod
+    @swag_from('./swagger.yml', endpoint='/alunos/<int:aluno_id>', methods=['PUT'])
     def atualizar_aluno(aluno_id):
         dados = request.json
         if not dados:
@@ -145,6 +150,7 @@ class AlunoController:
         return jsonify(mensagem), 200
     
     @staticmethod
+    @swag_from('./swagger.yml', endpoint='/alunos/<int:aluno_id>', methods=['DELETE'])
     def deletar_aluno(aluno_id):
         """
         Delete os dados de um aluno específico com base no ID informado

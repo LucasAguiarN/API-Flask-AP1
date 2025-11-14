@@ -4,11 +4,6 @@ info:
   description: Documentação para utilização do School Manager API, API RESTful construída com Flask para realizar o gerenciamento de Professores, Turmas e Alunos de uma instituição de ensino.
   version: "1.0.0"
 
-host: 127.0.0.1:5000
-basePath: /
-schemes:
-  - http
-
 tags:
   - name: Professores
     description: Operações Relacionadas a Entidade Professores
